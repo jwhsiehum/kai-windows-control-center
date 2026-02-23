@@ -61,19 +61,15 @@ class WebSocketManager {
     console.log('[WebSocket] Connecting to', this.config.wsUrl)
 
     try {
-      this.ws = new WebSocket(this.config.wsUrl)
+      // Include auth token in URL query param
+      const wsUrlWithToken = `${this.config.wsUrl}?token=${this.config.authToken}`
+      this.ws = new WebSocket(wsUrlWithToken)
 
       this.ws.onopen = () => {
         console.log('[WebSocket] Connected successfully')
         this.reconnectAttempts = 0
         this.setConnectionState(ConnectionState.CONNECTED)
         
-        // Send authentication
-        this.sendMessage({
-          type: 'connect',
-          payload: { token: this.config!.authToken },
-        })
-
         // Start ping interval
         this.startPingInterval()
       }
