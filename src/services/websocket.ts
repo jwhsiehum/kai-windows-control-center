@@ -15,7 +15,7 @@ import {
 const RECONNECT_BASE_DELAY = 1000 // 1 second
 const RECONNECT_MAX_DELAY = 30000 // 30 seconds
 const RECONNECT_MULTIPLIER = 2
-const PING_INTERVAL = 30000 // 30 seconds
+const PING_INTERVAL = 10000 // 10 seconds
 
 class WebSocketManager {
   private ws: WebSocket | null = null
@@ -150,6 +150,7 @@ class WebSocketManager {
     }
 
     try {
+      console.log('[WebSocket] Sending message:', message.type, message)
       this.ws.send(JSON.stringify(message))
       return true
     } catch (err) {
@@ -248,7 +249,7 @@ class WebSocketManager {
     
     this.pingInterval = setInterval(() => {
       if (this.isConnected()) {
-        this.sendMessage({ type: 'pong', timestamp: Date.now() })
+        this.sendMessage({ type: 'ping', timestamp: Date.now() })
       }
     }, PING_INTERVAL)
   }

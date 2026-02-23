@@ -31,6 +31,22 @@ export type WebSocketMessageType =
   | 'schedule_update'
   | 'system_status'
   | 'pong'
+  | 'ping'
+  | 'response'
+  | 'message'
+
+export interface PingMessage {
+  type: 'ping'
+  timestamp?: number
+}
+
+export interface ResponseMessage {
+  type: 'response'
+  payload: {
+    content: string
+  }
+  timestamp?: number
+}
 
 export interface WebSocketMessage {
   type: WebSocketMessageType

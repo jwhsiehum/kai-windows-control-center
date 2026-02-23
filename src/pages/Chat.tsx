@@ -3,7 +3,7 @@ import { MessageCircle, Wifi, WifiOff, Loader2 } from 'lucide-react'
 import ChatMessage from '../components/ChatMessage'
 import ChatInput from '../components/ChatInput'
 import { websocketManager } from '../services/websocket'
-import { ConnectionState } from '../types/gateway'
+import { ConnectionState, ResponseMessage } from '../types/gateway'
 
 interface Message {
   id: string
