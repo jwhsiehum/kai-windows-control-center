@@ -10,11 +10,13 @@ import {
   Kanban,
   Settings,
   X,
-  Menu
+  Menu,
+  MessageCircle
 } from 'lucide-react'
 
 // Pages
 import Dashboard from './pages/Dashboard'
+import Chat from './pages/Chat'
 import Memory from './pages/Memory'
 import Skills from './pages/Skills'
 import CronJobs from './pages/CronJobs'
@@ -37,6 +39,7 @@ declare global {
 
 const navItems = [
   { path: '/', icon: LayoutDashboard, label: 'Dashboard' },
+  { path: '/chat', icon: MessageCircle, label: 'Chat' },
   { path: '/memory', icon: Brain, label: 'Memory' },
   { path: '/skills', icon: Sparkles, label: 'Skills' },
   { path: '/cron-jobs', icon: Clock, label: 'Cron Jobs' },
@@ -119,6 +122,7 @@ function App() {
         <main className="flex-1 overflow-auto bg-slate-950">
           <Routes>
             <Route path="/" element={<Dashboard />} />
+            <Route path="/chat" element={<Chat />} />
             <Route path="/memory" element={<Memory />} />
             <Route path="/skills" element={<Skills />} />
             <Route path="/cron-jobs" element={<CronJobs />} />
