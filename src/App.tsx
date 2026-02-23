@@ -22,6 +22,9 @@ import Schedule from './pages/Schedule'
 import Heartbeats from './pages/Heartbeats'
 import KanbanPage from './pages/Kanban'
 
+// Components
+import ConnectionStatus from './components/ConnectionStatus'
+
 // Types
 declare global {
   interface Window {
@@ -97,6 +100,14 @@ function App() {
               </NavLink>
             ))}
           </nav>
+
+          {/* Connection Status */}
+          <div className="p-4 border-t border-slate-800">
+            <p className="text-xs text-slate-500 mb-3 uppercase tracking-wider">
+              Connection
+            </p>
+            <ConnectionStatus compact showLabel />
+          </div>
 
           {/* Version */}
           <div className="p-4 border-t border-slate-800">
